@@ -19,15 +19,11 @@ const dice = document.querySelector('.dice')
 const allScore = document.querySelectorAll('.player-score')
 const allCurrentScore = document.querySelectorAll('.player-current-score')
 
-
-
 let playerScore = [0, 0]
 let roundScore = 0
 let player = 0
 
-
 function createNewGame(){
-
   playerScore = [0, 0]
   updateScore(true)
   roundScore = 0
@@ -35,8 +31,6 @@ function createNewGame(){
   player = 0
   playerOnePanel.classList.add("active")
   playerTwoPanel.classList.remove("active")
-
-
 }
 
 function rollDice(){
@@ -93,7 +87,6 @@ function updatePlayerScore(updateAll = false){
     const playerScoreDiv = document.querySelector(`#score-${player}`)
     playerScoreDiv.innerHTML = playerScore[player]
   }
-
 }
 
 newGameButton.addEventListener('click', createNewGame)
