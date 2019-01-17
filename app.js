@@ -22,7 +22,7 @@ const allCurrentScore = document.querySelectorAll('.player-current-score')
 
 
 let playerScore = [0, 0]
-let roundScore = [0, 0]
+let roundScore = 0
 let player = 0
 
 
@@ -30,7 +30,7 @@ function createNewGame(){
 
   playerScore = [0, 0]
   updateScore(true)
-  roundScore = [0, 0]
+  roundScore = 0
   updatePlayerScore(true)
   player = 0
   playerOnePanel.classList.add("active")
@@ -43,10 +43,10 @@ function rollDice(){
   const randomNumber = Math.floor((Math.random() * 6) + 1);
   dice.src = `img/dice-${randomNumber}.png`
   if(randomNumber !== 1){
-    roundScore[player] += randomNumber
+    roundScore += randomNumber
     updateScore()
   } else {
-    roundScore[player] = 0
+    roundScore = 0
     updateScore()
     togglePlayer()
   }
@@ -57,7 +57,7 @@ function updateScore(updateAll = false){
     allCurrentScore.forEach(item => item.innerHTML = 0)
   } else {
     const currentScoreDiv = document.querySelector(`#current-${player}`)
-    currentScoreDiv.innerHTML = roundScore[player]
+    currentScoreDiv.innerHTML = roundScore
   }
 }
 
@@ -72,8 +72,8 @@ function togglePlayer(){
 }
 
 function holdDice(){
-  playerScore[player] += roundScore[player]
-  roundScore[player] = 0
+  playerScore[player] += roundScore
+  roundScore = 0
 
   updatePlayerScore()
   updateScore()
